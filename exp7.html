@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation Menu Demo</title>
+    <style>
+/* -------------------------------------------------------------------
+   CSS STYLES
+   ------------------------------------------------------------------- */
+
+/* Basic Reset and Global Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f8f8f8; /* Slightly off-white background */
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    overflow: auto; /* Used to contain/clear floated elements */
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px; /* Spacing inside the link */
+    /* display: block is the default for 'a' in the block and float examples */
+}
+
+
+/* 1. Block Example (Blue) */
+.nav-block li {
+    background-color: #3498db; /* Blue background */
+    margin-bottom: 2px; /* Small gap between links */
+    /* li is naturally a block element, taking up full width */
+}
+/* Anchor 'a' tags inside are set to display: block by default to fill the 'li' */
+
+
+/* 2. Inline Example (Green) */
+.nav-inline li {
+    display: inline; /* Makes list items flow horizontally, ignores width/height */
+    margin-right: 5px;
+}
+
+.nav-inline a {
+    display: inline; /* Makes links inline elements */
+    background-color: #2ecc71; /* Green background */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    /* Note: Inline elements ignore vertical padding (top/bottom) and vertical margins */
+}
+
+
+/* 3. Inline-Block Example (Purple) */
+.nav-inline-block li {
+    display: inline-block; /* Flows horizontally, but allows width/height/padding/margins */
+    margin-right: 5px;
+}
+
+.nav-inline-block a {
+    display: inline-block;
+    background-color: #9b59b6; /* Purple background */
+    border-radius: 5px;
+}
+
+
+/* 4. Float Example (Orange) */
+.nav-float li {
+    float: left; /* Pulls elements to the left, taking them out of normal flow */
+    margin-right: 5px;
+}
+
+.nav-float a {
+    background-color: #e67e22; /* Orange background */
+    border-radius: 5px;
+    display: block; /* Ensure the link fills the floated list item */
+}
+
+    </style>
+</head>
+<body>
+
+    <h1>Navigation Menu Demo</h1>
+
+    <h2>Block Example</h2>
+    <ul class="nav-block">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <h2>Inline Example</h2>
+    <ul class="nav-inline">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <h2>Inline-Block Example</h2>
+    <ul class="nav-inline-block">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <h2>Float Example</h2>
+    <ul class="nav-float">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+</body>
+</html>
