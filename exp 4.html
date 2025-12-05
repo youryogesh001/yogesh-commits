@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Room Booking</title>
+    </head>
+<body>
+
+    <h1 style="text-align: center;">Hotel Room Booking Form</h1>
+    
+    <form action="/submit-booking" method="POST">
+        
+        <div>
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required>
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone">
+        </div>
+
+        <div>
+            <label for="check_in_date">Check-in Date: (dd-mm-yyyy)</label>
+            <input type="date" id="check_in_date" name="check_in_date" required>
+        </div>
+
+        <div>
+            <label for="check_out_date">Check-out Date: (dd-mm-yyyy)</label>
+            <input type="date" id="check_out_date" name="check_out_date" required>
+        </div>
+
+        <div>
+            <label for="room_type">Room Type:</label>
+            <select id="room_type" name="room_type" required>
+                <option value="single_room">Single Room</option>
+                <option value="double_room">Double Room</option>
+                <option value="suite">Suite</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="num_guests">Number of Guests:</label>
+            <input type="number" id="num_guests" name="num_guests" min="1" required>
+        </div>
+
+        <div>
+            <label for="special_requests">Special Requests:</label>
+            <textarea id="special_requests" name="special_requests" rows="5" cols="50"></textarea>
+        </div>
+
+        <div>
+            <button type="submit">Book Now</button>
+            <button type="reset">Reset Form</button>
+        </div>
+
+    </form>
+
+</body>
+</html>
