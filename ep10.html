@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive ShopEase Navbar</title>
+    
+    <style>
+        /* --- Reset and Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* --- Navbar Styling (Desktop First) --- */
+        .navbar {
+            background-color: #333; /* Dark background */
+            color: white; /* White text */
+            padding: 15px 30px; /* Vertical and horizontal padding */
+            display: flex; /* Use Flexbox for alignment */
+            justify-content: space-between; /* Space out logo, links, and actions */
+            align-items: center; /* Vertically center items */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6600; /* Highlight color for the logo */
+        }
+
+        /* Hamburger Icon (Hidden by default on large screens) */
+        .menu-toggle {
+            display: none; 
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 5px;
+        }
+
+        /* Navigation Links Container (Desktop) */
+        .nav-links {
+            list-style: none; /* Remove bullet points */
+            display: flex; /* Make links horizontal */
+            gap: 25px; /* Space between links */
+            transition: transform 0.3s ease-in-out; /* Add transition for mobile sliding effect */
+        }
+
+        .nav-links li a {
+            text-decoration: none; /* Remove underline */
+            color: white;
+            font-size: 1.05rem;
+            padding: 5px 0;
+            transition: color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .nav-links li a:hover {
+            color: #ff6600; /* Highlight on hover */
+        }
+
+        /* Actions Section (Cart/Login) */
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .actions a:last-child {
+            /* Style for the Login/Primary button */
+            background-color: #ff6600;
+            font-weight: bold;
+        }
+
+        .actions a:last-child:hover {
+            background-color: #e65c00; /* Slightly darker on hover */
+        }
+
+        /* --- Section Styling (For content below navbar) --- */
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        section h1 {
+            color: #ff6600;
+            margin-bottom: 10px;
+        }
+
+        /* =======================================
+           Responsive Design Media Queries 
+           ======================================= */
+
+        /* Small Screens (Mobile - max 768px) */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            /* --- Hamburger Menu Icon --- */
+            .menu-toggle {
+                display: block; /* Show the toggle button */
+            }
+
+            /* --- Navigation Links (Mobile Dropdown) --- */
+            .nav-links {
+                /* Full screen takeover/dropdown setup */
+                position: absolute;
+                top: 60px; /* Position below the navbar height (approx 60px) */
+                left: 0;
+                width: 100%;
+                height: auto; 
+                background-color: #222; /* Darker background for the dropdown */
+                flex-direction: column; /* Stack links vertically */
+                align-items: center; /* Center links */
+                padding: 20px 0;
+                z-index: 1000;
+                
+                /* Hide off-screen by default (off the top) */
+                transform: translateY(-150%); 
+            }
+            
+            /* Class toggled by JS to show the menu */
+            .nav-links.active {
+                transform: translateY(0); /* Slide the menu down into view */
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+            
+            .nav-links li a {
+                display: block;
+                padding: 10px;
+                font-size: 1.1rem;
+            }
+            
+            /* Move actions closer together on mobile */
+            .actions {
+                font-size: 0.9rem;
+                gap: 10px;
+            }
+            
+            .actions a {
+                padding: 6px 10px;
+            }
+        }
+
+        /* Medium Screens (Tablets - 769px to 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .nav-links {
+                gap: 15px; /* Reduce gap to save space */
+            }
+            .nav-links li a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ShopEase</div>
+        
+        <div class="menu-toggle">☰</div> 
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="actions">
+            <a href="#">Cart 🛒</a>
+            <a href="#">Login</a>
+        </div>
+    </nav>
+
+    <section>
+        <h1>Welcome to ShopEase!</h1>
+        <p>Your one-stop destination for all shopping needs.</p>
+        <p>Try resizing your browser window to see the responsive menu!</p>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            // Toggle the 'active' class on click
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Optionally close the menu when a link is clicked (useful for single-page apps)
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
